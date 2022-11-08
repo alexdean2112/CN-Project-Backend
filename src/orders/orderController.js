@@ -21,3 +21,15 @@ exports.readOrders = async (req, res) => {
   }
 };
 
+exports.updateOrder = async (req, res) => {
+  try {
+    await Orders.updateOne(
+      { orderid: req.body.orderid },
+      { [req.body.key]: req.body.value }
+    );
+    res.status(201).send({ message: "Order successfully updated." });
+  } catch (error) {
+    console.log(error);
+    response.status(500).send({ error: error.message });
+  }
+};
