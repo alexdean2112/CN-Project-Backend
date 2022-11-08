@@ -10,3 +10,14 @@ exports.createOrder = async (req, res) => {
     res.status(500).send({ error: error.message });
   }
 };
+
+exports.readOrders = async (req, res) => {
+  try {
+    const orders = await Orders.find({});
+    res.status(200).send({ order: orders });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error: error.message });
+  }
+};
+
