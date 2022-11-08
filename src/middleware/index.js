@@ -31,7 +31,7 @@ exports.tokenCheck = async (req, res, next) => {
   }
 };
 
-exports.comparePasswords = async (req, res, next) => {
+exports.comparePassword = async (req, res, next) => {
   try {
     req.user = await User.findOne({ username: req.body.username });
     if (
