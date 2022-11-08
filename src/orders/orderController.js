@@ -33,3 +33,13 @@ exports.updateOrder = async (req, res) => {
     response.status(500).send({ error: error.message });
   }
 };
+
+exports.deleteOrder = async (req, res) => {
+  try {
+    await Orders.deleteOne({ orderid: req.body.orderid });
+    response.status(200).send({ message: "Order cancelled." });
+  } catch (error) {
+    console.log(error);
+    response.status(500).send({ error: error.message });
+  }
+};
