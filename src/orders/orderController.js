@@ -23,23 +23,21 @@ exports.readOrders = async (req, res) => {
 
 exports.updateOrder = async (req, res) => {
   try {
-    await Orders.updateOne(
-      { orderid: req.body.orderid },
-      { [req.body.key]: req.body.value }
-    );
-    res.status(201).send({ message: "Order successfully updated." });
-  } catch (error) {
+    await Orders.updateOne(req.body.filter, {$set: req.body.update});
+    res.status(200).send({message: "Order details updated" });
+}
+catch (error) {
     console.log(error);
-    response.status(500).send({ error: error.message });
-  }
+    res.status(500).send({message: "Failed to change details"});
+}
 };
 
 exports.deleteOrder = async (req, res) => {
   try {
     await Orders.deleteOne({ orderid: req.body.orderid });
-    response.status(200).send({ message: "Order cancelled." });
+    res.status(200).send({ message: "Order cancelled." });
   } catch (error) {
     console.log(error);
-    response.status(500).send({ error: error.message });
+    res.status(500).send({ error: error.message });
   }
 };
