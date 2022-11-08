@@ -1,5 +1,4 @@
 const Orders = require("./orderModel");
-const jwt = require("jsonwebtoken");
 
 exports.createOrder = async (req, res) => {
   try {
@@ -34,8 +33,8 @@ catch (error) {
 
 exports.deleteOrder = async (req, res) => {
   try {
-    await Orders.deleteOne({ orderid: req.body.orderid });
-    res.status(200).send({ message: "Order cancelled." });
+    await Orders.deleteMany({ orderid: req.body.orderid });
+    res.status(200).send({ message: "Order(s) cancelled." });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.message });
