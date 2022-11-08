@@ -10,8 +10,8 @@ const { tokenCheck } = require("../middleware");
 const orderRouter = Router();
 
 orderRouter.post("/createOrder", tokenCheck, createOrder);
-orderRouter.get("/readOrders", tokenCheck, readOrders);
-orderRouter.put("/updateOrder", tokenCheck, updateOrder);
-orderRouter.delete("/deleteOrder", tokenCheck, deleteOrder);
+orderRouter.get("/readOrders", readOrders);
+orderRouter.put("/updateOrder", updateOrder);
+orderRouter.delete("/deleteOrder", deleteOrder);
 
 module.exports = orderRouter;
