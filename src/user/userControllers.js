@@ -5,7 +5,7 @@ exports.createUser = async (req, res) => {
     try {
         const newUser = await User.create(req.body);
         const token = await jwt.sign({_id: newUser._id}, process.env.SECRET);
-        res.status(200).send({username: newUser.username, email: newUser.email, token});
+        res.status(200).send({username: newUser.username, email: newUser.email, token: token});
     }
     catch (error) {
         console.log(error);
@@ -49,7 +49,7 @@ exports.deleteUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
     try {
         const token = await jwt.sign({_id: req.user._id}, process.env.SECRET);
-        res.status(200).send({username: req.user.username, token, message: "Successfully logged in"});
+        res.status(200).send({username: req.user.username, token: token, message: "Successfully logged in"});
     }
     catch (error) {
         console.log(error);
