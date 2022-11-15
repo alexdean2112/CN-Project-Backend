@@ -12,7 +12,7 @@ exports.createOrder = async (req, res) => {
 
 exports.readOrders = async (req, res) => {
   try {
-    const orders = await Orders.find({});
+    const orders = await Orders.find({user: req.body.user});
     res.status(200).send({ order: orders });
   } catch (error) {
     console.log(error);
