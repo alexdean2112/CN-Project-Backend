@@ -9,6 +9,10 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  user: {
+    type: String,
+    required: true,
+  }
 });
 
 const Orders = mongoose.model("orders", orderSchema);
