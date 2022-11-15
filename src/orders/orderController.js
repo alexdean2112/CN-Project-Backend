@@ -3,7 +3,7 @@ const Orders = require("./orderModel");
 exports.createOrder = async (req, res) => {
   try {
     const newOrder = await Orders.create(req.body);
-    res.status(201).send({ order: newOrder.orderid });
+    res.status(201).send({ order: newOrder, message: "Order created." });
   } catch (error) {
     console.log(error);
     res.status(500).send({ error: error.message });
@@ -12,7 +12,7 @@ exports.createOrder = async (req, res) => {
 
 exports.readOrders = async (req, res) => {
   try {
-    const orders = await Orders.find({});
+    const orders = await Orders.find({user: req.body.user});
     res.status(200).send({ order: orders });
   } catch (error) {
     console.log(error);

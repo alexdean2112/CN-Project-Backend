@@ -9,7 +9,7 @@ const {
 const orderRouter = Router();
 
 orderRouter.post("/createOrder", createOrder);
-orderRouter.get("/readOrders", readOrders);
+orderRouter.post("/readOrders", readOrders);
 orderRouter.put("/updateOrder", updateOrder);
 orderRouter.delete("/deleteOrder", deleteOrder);
 
