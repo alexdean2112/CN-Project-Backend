@@ -8,5 +8,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.1"
   },
-  "proxy" : "http://localhost:3000/"
+  "proxy" : "http://localhost:3000/",
+  "scripts" : {
+    "start" : "node src/server.js"
+  }
 }

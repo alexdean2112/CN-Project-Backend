@@ -15,10 +15,6 @@ app.use(cors())
 
 app.use(userRouter, orderRouter);
 
-app.listen(port, () => {
-    console.log(`Listening to Port ${port}`);
-})
-
 app.post('/getGames', (req, res) => {
     axios({
         url: "https://api.igdb.com/v4/games",
@@ -37,3 +33,12 @@ app.post('/getGames', (req, res) => {
             res.send(err)
         });
     })
+
+app.get("/health", (req, res) => {
+    res.status(200).send({ message: "API is working." });
+});
+
+
+app.listen(port, () => {
+    console.log(`Listening to Port ${port}`);
+})
