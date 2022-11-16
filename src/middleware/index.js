@@ -51,11 +51,11 @@ exports.comparePassword = async (req, res, next) => {
     req.user = await User.findOne({ username: req.body.username });
     if (
       req.user &&
-      (await bcrypt.compare(req.body.password, req.user.password))
+      (await bcrypt.compare(req.body.password, req.user.password) && (req.body.email === req.user.email))
     ) {
       next();
     } else {
-      throw new Error("Incorrect user id or password...");
+      throw new Error("LOGIN DETAILS INCORRECT");
     }
   } catch (error) {
     console.log(error);
